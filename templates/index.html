@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>FANNSI</title>
+    <style> 
+        textarea {
+          width: 600px;
+          height: 150px;
+          font-size: 16px;
+          resize: both;
+        }
+        </style>
+  </head>
+  <body>
+    <h1> Feature-based Approximate Nearest Neighbor Search for IDRs (FANNSI)</h1>
+    <h3>Paste in your IDR protein sequence</h3>
+    <form method="POST" id="seq-form" >
+      <textarea name="seq"></textarea>
+      <h3>Specify the number of hits (default = 10)</h3>
+      <p><input type="text" name="threshold"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+</br>
+<p >Developed by Khaled Elemam</p>
+
+
+  </body>
+</html>

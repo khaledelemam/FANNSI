@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>FANNSI</title>
+  </head>
+  <body>
+    <h1>Feature-based Approximate Nearest Neighbor Search for IDRs (FANNSI) </h1>
+    <h3> Results (ranked from most to least similar to query sequence across 11 species)</h3> 
+    <p>P-values coming soon!</p>
+    <table border='1' style='border-collapse:collapse'>
+       <thead><tr><th>Protein ID</th><th>Annotation</th><th>Link</th></tr></thead>
+        {% for key ,value in result.items() %}
+        <tr>
+           <th> {{ key }} </th>
+           <td> {{ value[0] }} </td>
+           <td> <a href = "{{ value[1] }}" target ="_blank">Uniprot page</a></td>
+        </tr>
+    
+        {% endfor %}
+     </table>
+  </body>
+  <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+</html>
