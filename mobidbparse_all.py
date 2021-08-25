@@ -17,8 +17,6 @@ def getIDRS(seq, nums):
             counter+=1
         elif int(nums[j]) == 0:
             if counter > 20:
-                # print(j)
-                # print(counter)
                 allIdrs.append(idr)
                 idr = ""
                 counter = 0
@@ -35,44 +33,27 @@ count_b = 1
 all ={}
 with open('all.fasta') as f:
     line = f.readline()
-    # print(line)
     regexID= re.findall("^(.*?)\|", line)
     tempID = regexID[0]
     seq = f.readline().strip()
-    # allSeqs[tempID] = {"seq": seq, "num": ""}
     all[tempID] = []
-    # seq = f.readline()
-    # print(regexID)
-    flag = True
     while line:
         line = f.readline()
         regex50 = re.findall("th_50", line)
         regexID= re.findall("^(.*?)\|", line)
-        # print(regexID)
 
         #found binary sequence
         if regex50 == ["th_50"] and regexID[0] == tempID:
             count_c+=1
             nums = f.readline().strip()
-            # print(nums)
-            # allSeqs[regexID[0]]["num"] = nums
-            # print(line)
-            # print(getIDRS(seq,nums))
             idrs = getIDRS(seq,nums)
-            # if len of idr > 20
-            # if len(idrs) > 0:
             all[tempID] = idrs
-            flag = True
-            # else:
-            #     del all[tempID]
+       
     
         #new id
         elif len(regexID) > 0:
-            # print (all)
             if regexID[0] != tempID:
-            
                 count_b+=1
-
                 # if th_50 does not exist or no idrs
                 if len(all[tempID])  == 0:
                     del all[tempID]         
@@ -83,14 +64,7 @@ with open('all.fasta') as f:
 if len(all[tempID])  == 0:
      del all[tempID] 
 
-# print(allSeqs)
-# print(all)
-# ["lol", "kay"]
-# all[">P31946"] = ["lol", "kay"]
-t11 = time.time()
 
-tt = t11 - t0
-print(tt)
 count = 0
 with open("mobidb_all.fasta",'w+') as f:
     for id, seq in all.items():
@@ -100,17 +74,10 @@ with open("mobidb_all.fasta",'w+') as f:
                 idnew = id + "_" + str(i+1)
                 f.write(idnew + '\n')
                 f.write(seq[i] + '\n')
-        # else:
-        #     f.write(id + '\n')
-        #     f.write(seq[0] + '\n')
-
+      
        
 
-t1 = time.time()
-t = t1 - t0
-# tt = t11 - t0
-print(t)
-# print(tt)
+
 print("chosen IDRs: ",count)
 print("all IDRs: ", count_b)
 print("th_50 absent: ",count_c)
