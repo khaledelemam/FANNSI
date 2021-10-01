@@ -1,7 +1,7 @@
 # FANNSI
 Feature-based Approximate Nearest Neighbor Search
 
-Access the website at: https://fannsi.herokuapp.com/
+Access the website at: http://142.150.219.251:5000/
 
 
 Authors
